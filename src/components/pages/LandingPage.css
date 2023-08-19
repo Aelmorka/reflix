@@ -1,0 +1,28 @@
+.users{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.users ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.users__user {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.user1 {background-color: #6253a5;}
+.user2 {background-color: #56c466;}
+.user3 {background-color: #00c1ff;}
+.user4 {background-color: #a4a6ff;}
+.user5 {background-color: #ff9efa;}
+.user6 {background-color: #ffd7b7;}
+.user7 {background-color: #ffffaa;}
