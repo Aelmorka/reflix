@@ -3,8 +3,8 @@ import './LandingPage.css'
 import User from './../users/User'
 import AddUser from './../users/AddUser'
 
-export default function LandingPage({users, getUserById, add, remove}) {
-
+export default function LandingPage({users, getUserById, add, remove, page}) {
+    page('home')
     return (
         <div className="users">
             <h1>Who is watching?</h1>

@@ -1,15 +1,90 @@
+:root {
+  --blue: #1e90ff;
+  --lightblue: #88c4ff;
+  --pink: #fc7de9;
+  --lightpink: #febdf4;
+  --violet: #c76dfe;
+  --lightviolet: #dba1ff;
+  --green: #73fb4e;
+  --lightgreen: #b6fba3;
+  --yellow: #fff653;
+  --lightyellow: #fffcc1;
+}
 body {
   background-color: black;
   color: white;
+  position: relative;
+}
+body a {
+  text-decoration: none;
+}
+
+@font-face {
+	font-family: 'Neonworld';
+	src: url('./components/fonts/NeonWorldDemoRegular-lg6Mq.ttf');
+}
+@font-face {
+  font-family: 'Neon';
+  src: url('./components/fonts/Neon-e2wg.ttf');
+}
+@font-face {
+  font-family: 'Picadili';
+  src: url('./components/fonts/Picadilly-3ax8.ttf');
 }
 
 .navigation {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
+  font-family: 'Picadili', 'Courier New', Courier;
+  font-size: 30px;
 }
 
 .navigation ul {
   list-style: none;
-  display: flex;
+  display: flex; 
+}
+
+.navigation li {
+  padding: 5px 20px;
+}
+
+.navigation a {
+  color: var(--violet)
+}
+.navigation a.active {
+  color: var(--lightpink);
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+}
+
+.navigation__logo {
+  font-size: 30px;
+  font-family: 'Neonworld', 'Courier New', Courier;
+  margin-right: 20px;
+}
+
+.navigation__logo .blue {
+  color: var(--blue);
+  text-shadow: 0 0 10px var(--lightblue), 0 0 20px var(--blue), 0 0 30px var(--blue);
+}
+.navigation__logo .violet {
+  color: var(--violet);
+  text-shadow: 0 0 10px var(--lightviolet), 0 0 20px var(--violet), 0 0 30px var(--violet);
+}
+.navigation__logo .pink {
+  color: var(--pink);
+  text-shadow: 0 0 10px var(--lightpink), 0 0 20px var(--pink), 0 0 30px var(--pink);
+}
+.navigation__logo .green {
+  color: var(--green);
+  text-shadow: 0 0 10px var(--lightgreen), 0 0 20px var(--green), 0 0 30px var(--green);
+}
+.navigation__logo .yellow {
+  color: var(--yellow);
+  text-shadow: 0 0 10px var(--lightyellow), 0 0 20px var(--yellow), 0 0 30px var(--yellow);
+}
+.navigation__logo .white {
+  color: white;
+  text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
 }

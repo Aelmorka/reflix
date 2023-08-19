@@ -5,11 +5,14 @@ import { getUser, filterMovies } from '../helpers/common'
 import Catalog from './../catalog/Catalog'
 import Budget from './../users/Budget'
 import MovieSearch from './../catalog/Search'
-export default function CatalogPage({rent, unrent}) {
+export default function CatalogPage({rent, unrent, page}) {
     let [movies, setMovies] = useState([])
     let [rentedMovies, setRentedMovies] = useState([])
     let [user, setUser] = useState(getUser())
     
+    function changePage() {
+        page('catalog')
+    }
     function rentMovie(movie) {
         rent(movie)
         setUser(getUser())
@@ -46,6 +49,7 @@ export default function CatalogPage({rent, unrent}) {
     useEffect(() => {
         setRentedMovies(user?.movies || [])
         getMovies()
+        changePage()
     }, [])
 
     useEffect(() => {

@@ -13,6 +13,7 @@ import AccountPage from './components/pages/AccountPage'
 function App() {
 	let [users, setUsers] = useState(getUsers())
 	let [chosenUser, setChosenUser] = useState(getUser())
+	let [page, setPage] = useState('home')
 	function getUserById(id) {
 		let user = users.find(user => user.id === id)
 		chooseUser(user)
@@ -65,14 +66,29 @@ function App() {
 		newUsers[acceptorIndex].budget += Number(sum)
 		updateAllUsers(newUsers, donorIndex)
 	}
+	function changePage(page) {
+		setPage(page)
+	}
   	return (
     	<Router>
-            <NavBar chosenUser={chosenUser}/>
+            <NavBar chosenUser={chosenUser} active={page}/>
             <Routes>
-                <Route path="/" element={<LandingPage users={users} getUserById={getUserById} add={addNewUser} remove={removeUser}/>} />
-                <Route path="/catalog" element={<CatalogPage rent={rentMovie} unrent={unrentMovie} user={chosenUser}/>} />
+                <Route path="/" element={<LandingPage 
+											users={users} 
+											getUserById={getUserById} 
+											add={addNewUser} 
+											remove={removeUser}
+											page={changePage}/>} />
+                <Route path="/catalog" element={<CatalogPage 
+											rent={rentMovie} 
+											unrent={unrentMovie} 
+											user={chosenUser}
+											page={changePage}/>} />
                 <Route path="/catalog/:id" element={<CatalogItemPage />} />
-				<Route path="/account" element={<AccountPage increase={increaseBudget} send={sendGift}/>} />
+				<Route path="/account" element={<AccountPage 
+												increase={increaseBudget} 
+												send={sendGift}
+												page={changePage}/>} />
             </Routes>
         </Router>
   	);
