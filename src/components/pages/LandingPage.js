@@ -1,10 +1,11 @@
 import './LandingPage.css'
 
+import { useEffect } from 'react'
 import User from './../users/User'
 import AddUser from './../users/AddUser'
 
 export default function LandingPage({users, getUserById, add, remove, page}) {
-    page('home')
+    useEffect(() => page('home'))
     return (
         <div className="users">
             <h1>Who is watching?</h1>

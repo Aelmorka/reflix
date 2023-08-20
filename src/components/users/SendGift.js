@@ -1,5 +1,7 @@
 import { useRef, useState } from "react"
 import { getUsers, getUserId } from './../helpers/common'
+
+import CustomSelect from './../common/CustomSelect'
 export default function SendGift({send}) {
     let sumRef = useRef(null)
     let friends = getUsers()
@@ -9,23 +11,20 @@ export default function SendGift({send}) {
         let userIndex = friends.findIndex(fr => fr.id === userId)
         friends.splice(userIndex, 1)
     }
-    function handleChoosing(e) {
-        setChosen(e.target.value)
-    }
     function sendGiftToOtherUser() {
         send(chosen, sumRef.current.value)
+    }
+    function chooseFriend(id) {
+        setChosen(id)
     }
     return (
         <>
             {friends?.length !== 0 &&
                 <div>
-                    <h1>Send a gift</h1>
+                    <h3>Send a gift</h3>
                     <input ref={sumRef} name="sum"/>
-                    <select value={chosen} onChange={handleChoosing}>
-                        <option key="0" value="0">Not chosen</option>
-                        {friends.map(friend => <option key={friend.id} value={friend.id}>{friend.name}</option>)}
-                    </select>
-                    <button onClick={sendGiftToOtherUser}>Send</button>
+                    <CustomSelect options={friends} chosen={chooseFriend}/>
+                    <button className="btn-prime" onClick={sendGiftToOtherUser}>Send</button>
                 </div>
             }
         </>

@@ -3,7 +3,7 @@ export default function Budget() {
     let user = getUser()
     return (
         <div>
-            {user.budget}
+            Budget: $ {user.budget}
         </div>
     )
 }

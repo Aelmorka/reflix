@@ -1,3 +1,4 @@
+import './CatalogPage.css'
 import { useState, useEffect } from 'react'
 import { BASE_LIST_URL, API_KEY, BASE_SEARCH_URL } from './../helpers/config'
 import { getUser, filterMovies } from '../helpers/common'
@@ -62,11 +63,13 @@ export default function CatalogPage({rent, unrent, page}) {
         }
     }, [user])
     return (
-        <div>
-            <MovieSearch searchMovie={searchMovie} />
-            {user &&
-                <Budget />
-            }
+        <div className="catalog">
+            <div className="catalog__header">
+                <MovieSearch searchMovie={searchMovie} />
+                {user &&
+                    <Budget />
+                }
+            </div>
             {user && user?.movies?.length !== 0 &&
                 <Catalog header="Rented" movies={rentedMovies} unrent={unrentMovie}/>
             }

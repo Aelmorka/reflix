@@ -1,3 +1,4 @@
+import Icons from './../../images/sprite.svg'
 import { Link } from 'react-router-dom'
 
 import { IMG_URL } from './../helpers/config'
@@ -9,19 +10,23 @@ export default function CatalogItem({movie, rent, unrent}) {
         unrent(movie)
     }
     return (
-        <div>
-            <Link to={`/catalog/${movie.id}`}>
+        <div className="catalog__item">
+            <Link className="catalog__item-content" to={`/catalog/${movie.id}`}>
                 <img alt={movie.title} src={IMG_URL + movie.backdrop_path} />
                 <p>{movie.title}</p>
             </Link>
             {rent &&
-                <button onClick={addMovie}>
-                    add
+                <button className="catalog__item-button" onClick={addMovie}>
+                    <svg>
+                        <use href={`${Icons}#rent`}/>
+                    </svg>
                 </button>
             }
             {unrent &&
-                <button onClick={returnMovie}>
-                    del
+                <button className="catalog__item-button" onClick={returnMovie}>
+                    <svg>
+                        <use href={`${Icons}#unrent`}/>
+                    </svg>
                 </button>
             }
         </div>

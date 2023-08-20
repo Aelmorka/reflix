@@ -1,0 +1,23 @@
+.account {
+    padding: 0 20px;
+}
+.account__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 15px 20px -15px var(--grey), 0px 25px 40px -25px var(--pink); 
+}
+.account__info h1 {
+    font-size: 40px;
+    margin: 10px 0;
+}
+.account label {
+    display: block;
+}
+.account label span {
+    width: 150px;
+    display: inline-block;
+}
+.account__increase {
+    box-shadow: 0px 25px 20px -25px var(--grey), 0px 45px 40px -45px var(--pink); 
+}

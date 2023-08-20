@@ -1,0 +1,11 @@
+.custom-select-container {
+    position: relative;
+    border: 1px solid var(--lightviolet);
+    border-radius: 50px;
+    padding: 5px 10px;
+    width: 210px;
+    margin: 10px;
+}
+.custom-select-options {
+    list-style: none;
+}

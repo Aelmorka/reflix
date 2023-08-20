@@ -9,12 +9,18 @@ export default function Details() {
         const response = await fetch(`${BASE_ITEM_URL}${id}?api_key=${API_KEY}`);
         const movie = await response.json();
         setMovieDetails(movie)
-        console.log(movie)
     }
     useEffect(() => {getMovieDetails()}, [])
     return (
-        <div>
-            <img alt={movieDetails.title} src={IMG_URL + movieDetails.backdrop_path}/>
-        </div>
+        <>
+            {movieDetails.backdrop_path &&
+                <div className="details">
+                    <img alt={movieDetails.title} src={IMG_URL + movieDetails.backdrop_path}/>
+                    <h1>{movieDetails.title}</h1>
+                    <p>Released: {movieDetails.release_date}</p>
+                    <p>{movieDetails.overview}</p>
+                </div>
+            }
+        </>
     )
 }

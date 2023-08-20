@@ -9,16 +9,9 @@
   --lightgreen: #b6fba3;
   --yellow: #fff653;
   --lightyellow: #fffcc1;
+  --grey: #ccc;
+  --darkgrey: #484848;
 }
-body {
-  background-color: black;
-  color: white;
-  position: relative;
-}
-body a {
-  text-decoration: none;
-}
-
 @font-face {
 	font-family: 'Neonworld';
 	src: url('./components/fonts/NeonWorldDemoRegular-lg6Mq.ttf');
@@ -30,6 +23,24 @@ body a {
 @font-face {
   font-family: 'Picadili';
   src: url('./components/fonts/Picadilly-3ax8.ttf');
+}
+@font-face {
+  font-family: 'Chalk';
+  src: url('./components/fonts/MfKillingLoneliness-Agpg.ttf');
+}
+
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("./images/wall.jpg") no-repeat black;
+  background-size: cover;
+  color: var(--grey);
+  position: relative;
+  background-position: top;
+  font-family: 'Chalk', 'Courier New', Courier;
+  font-size: 30px;
+}
+body a {
+  text-decoration: none;
 }
 
 .navigation {
@@ -87,4 +98,27 @@ body a {
 .navigation__logo .white {
   color: white;
   text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+}
+
+input {
+  background-color: transparent;
+  border: 1px solid var(--lightviolet);
+  border-radius: 50px;
+  outline: none;
+  height: 30px;
+  min-width: 200px;
+  margin: 10px;
+  font-family: 'Chalk', 'Courier New', Courier, monospace;
+  color: var(--grey);
+  padding: 5px 15px;
+  font-size: 25px;
+}
+.btn-prime {
+  font-family: 'Picadili', 'Courier New', Courier, monospace;
+  color: var(--lightviolet);
+  background-color: transparent;
+  padding: 10px;
+  border: none;
+  font-size: 30px;
+  text-shadow: 0 0 10px white, 0 0 20px var(--violet), 0 0 30px var(--violet);
 }
