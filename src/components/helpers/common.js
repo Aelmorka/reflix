@@ -43,7 +43,7 @@ export function getUserId() {
 }
 
 export function filterMovies(movies, rented) {
-    let filtered
+    let filtered = []
     if (!rented || rented?.length === 0) {
         filtered = movies.reduce((result, cur) => {
             if (cur.backdrop_path) {

@@ -1,22 +1,30 @@
-import { useRef } from "react"
+import { useState } from "react"
 export default function IncreaseBudget({increase}) {
-    let cardNumberRef = useRef(null)
-    let sumRef = useRef(null)
+    let [cardNumber, setCardNumber] = useState('')
+    let [sum, setSum] = useState('')
     function paymentHandler() {
-        increase(sumRef.current.value)
+        increase(sum)
+        setSum('')
+        setCardNumber('')
     }
     return (
         <div className="account__increase">
             <h3>Increase budget</h3>
             <label htmlFor="cardNumber">
                 <span>Card number</span>
-                <input ref={cardNumberRef} name="cardNumber" id="cardNumber"/>
+                <input value={cardNumber} 
+                    onChange={(e) => setCardNumber(e.target.value)} 
+                    name="cardNumber" id="cardNumber"/>
             </label>
             <label htmlFor="sum">
                 <span>Sum</span>
-                <input ref={sumRef} name="sum" id="sum"/>
+                <input value={sum} onChange={(e) => setSum(e.target.value)} name="sum" id="sum"/>
             </label>
-            <button className="btn-prime" onClick={paymentHandler}>Add money</button>
+            <button className="btn-prime" 
+                onClick={paymentHandler}
+                disabled={cardNumber === '' || sum === '' ? 'disabled' : ''}>
+                    Add money
+            </button>
         </div>
     )
 }

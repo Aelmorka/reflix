@@ -26,42 +26,43 @@ export default function CatalogPage({rent, unrent, page}) {
         setUser(getUser())
     }
     function searchMovie(title) {
-        findMovies(title)
+        getMovies(title)
     }
     
-    async function getMovies() {
-        const response = await fetch(`${BASE_LIST_URL}?api_key=${API_KEY}`);
-        const moviesResp = await response.json();
-        if (user?.movies?.length !== 0) {
-            setMovies(filterMovies(moviesResp.results, user.movies))
-        } else {
-            setMovies(filterMovies(moviesResp.results))
-        }
+    function getMovies(query) {
+        let request = query ? `${BASE_SEARCH_URL}?api_key=${API_KEY}&query=${query}` : `${BASE_LIST_URL}?api_key=${API_KEY}`
+        fetch(request)
+            .then(function(response) {
+                if (!response.ok) {
+                    throw Error(response.statusText)
+                }
+                return response.json()
+            })
+            .then(function(data) {
+                if (user && user?.movies?.length !== 0) {
+                    setMovies(filterMovies(data.results, user.movies))
+                } else {
+                    setMovies(filterMovies(data.results))
+                }
+            }).catch(function(error) {
+                console.log(error);
+            })
     }
-    async function findMovies(query) {
-        const response = await fetch(`${BASE_SEARCH_URL}?api_key=${API_KEY}&query=${query}`);
-        const moviesResp = await response.json();
-        if (user?.movies?.length !== 0) {
-            setMovies(filterMovies(moviesResp.results, user.movies))
+    useEffect(() => {
+        let newMovies = [...movies]
+        setRentedMovies(user?.movies)
+        if (user && user?.movies?.length !== 0) {
+            setMovies(filterMovies(newMovies, user.movies))
         } else {
-            setMovies(filterMovies(moviesResp.results))
+            setMovies(filterMovies(newMovies))
         }
-    }
+    }, [user])
     useEffect(() => {
         setRentedMovies(user?.movies || [])
         getMovies()
         changePage()
     }, [])
 
-    useEffect(() => {
-        let newMovies = [...movies]
-        setRentedMovies(user?.movies)
-        if (user?.movies?.length !== 0) {
-            setMovies(filterMovies(newMovies, user.movies))
-        } else {
-            setMovies(filterMovies(newMovies))
-        }
-    }, [user])
     return (
         <div className="catalog">
             <div className="catalog__header">

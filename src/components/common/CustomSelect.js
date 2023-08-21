@@ -1,8 +1,7 @@
 import './CustomSelect.css'
 import { useState, useEffect } from "react"
-export default function CustomSelect({chosen, options}) {
+export default function CustomSelect({chosen, options, choose}) {
     let [showOptions, setShowOptions] = useState(false)
-    let [selectedIndex, setSelectedIndex] = useState(null)
     
     function handleClickOutside(e){
         if (
@@ -18,8 +17,7 @@ export default function CustomSelect({chosen, options}) {
     function handleOptionClick(e) {
         let id = e.target.getAttribute("data-id")
         let index = options.findIndex(el => el.id === Number(id))
-        setSelectedIndex(index)
-        chosen(id)
+        choose(index)
         setShowOptions(false)
     }
     useEffect(() => {
@@ -32,7 +30,7 @@ export default function CustomSelect({chosen, options}) {
         <div className="custom-select-container">
             <div className="custom-select-text"
                 onClick={handleListDisplay}>
-                {selectedIndex !== null ? options[selectedIndex].name : "Select friend"}
+                {chosen !== '' ? options[chosen].name : "Select friend"}
             </div>
             {showOptions &&
                 <ul className="custom-select-options">

@@ -12,7 +12,9 @@ export default function LandingPage({users, getUserById, add, remove, page}) {
             <ul>
                 {users.map((user, index) => <li key={user.id}><User index={index} user={user} getUserById={getUserById} remove={remove}/></li>)}
             </ul>
-            <AddUser add={add} />
+            {(!users || users.length < 7) &&
+                <AddUser add={add} />
+            }
         </div>
     )
 }
