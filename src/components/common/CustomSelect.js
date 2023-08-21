@@ -13,7 +13,7 @@ export default function CustomSelect({chosen, options}) {
         }
     }
     function handleListDisplay() {
-        setShowOptions(true)
+        setShowOptions(!showOptions)
     }
     function handleOptionClick(e) {
         let id = e.target.getAttribute("data-id")
@@ -32,7 +32,7 @@ export default function CustomSelect({chosen, options}) {
         <div className="custom-select-container">
             <div className="custom-select-text"
                 onClick={handleListDisplay}>
-                {selectedIndex ? options[selectedIndex].name : "Select friend"}
+                {selectedIndex !== null ? options[selectedIndex].name : "Select friend"}
             </div>
             {showOptions &&
                 <ul className="custom-select-options">

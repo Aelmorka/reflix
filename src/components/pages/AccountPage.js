@@ -17,8 +17,10 @@ export default function AccountPage({increase, send, page}) {
                 <h1>{user.name}</h1>
                 <Budget />
             </div>
-            <IncreaseBudget increase={increase} />
-            <SendGift send={send}/>
+            <div className="account__actions">
+                <IncreaseBudget increase={increase} />
+                <SendGift send={send}/>
+            </div>
         </div>
     )
 }
