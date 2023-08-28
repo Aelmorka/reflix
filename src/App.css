@@ -145,3 +145,34 @@ select:-webkit-autofill:focus {
   text-shadow: none;
   cursor: not-allowed;
 }
+
+.btn-svg {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.btn-svg svg {
+  width: 50px;
+  height: 50px;
+  color: var(--violet);
+}
+
+.modal__container {
+  position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  border-radius: 20px;
+  background-color: black;
+  box-shadow: 0 0 30px #4d4d4d, 0 0 70px var(--pink);
+}

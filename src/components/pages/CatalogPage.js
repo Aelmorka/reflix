@@ -64,17 +64,19 @@ export default function CatalogPage({rent, unrent, page}) {
     }, [])
 
     return (
-        <div className="catalog">
-            <div className="catalog__header">
-                <MovieSearch searchMovie={searchMovie} />
-                {user &&
-                    <Budget />
+        <>
+            <div className="catalog">
+                <div className="catalog__header">
+                    <MovieSearch searchMovie={searchMovie} />
+                    {user &&
+                        <Budget />
+                    }
+                </div>
+                {user && user?.movies?.length !== 0 &&
+                    <Catalog header="Rented" movies={rentedMovies} unrent={unrentMovie}/>
                 }
+                <Catalog header="Catalog" movies={movies} rent={rentMovie}/>
             </div>
-            {user && user?.movies?.length !== 0 &&
-                <Catalog header="Rented" movies={rentedMovies} unrent={unrentMovie}/>
-            }
-            <Catalog header="Catalog" movies={movies} rent={rentMovie}/>
-        </div>
+        </>
     )
 }

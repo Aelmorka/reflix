@@ -9,11 +9,14 @@ import LandingPage from './components/pages/LandingPage'
 import CatalogPage from './components/pages/CatalogPage'
 import CatalogItemPage from './components/pages/CatalogItemPage'
 import AccountPage from './components/pages/AccountPage'
+import Modal from './components/catalog/Modal'
 
 function App() {
 	let [users, setUsers] = useState(getUsers())
 	let [chosenUser, setChosenUser] = useState(getUser())
 	let [page, setPage] = useState('home')
+	let [showModal, setShowModal] = useState(false)
+    let [lastRentedName, setLastRentedName] = useState("")
 	function getUserById(id) {
 		let user = users.find(user => user.id === id)
 		chooseUser(user)
@@ -43,6 +46,8 @@ function App() {
 		newUsers[userIndex].movies.push(movie)
 		newUsers[userIndex].budget -= MOVIE_PRICE
 		updateAllUsers(newUsers, userIndex)
+		setLastRentedName(movie.title)
+		setShowModal(true)
 	}
 	function unrentMovie(movie) {
 		let userIndex = users.findIndex(el => el.id === chosenUser.id)
@@ -69,6 +74,9 @@ function App() {
 	function changePage(page) {
 		setPage(page)
 	}
+	function closeModal(isShowed) {
+        setShowModal(isShowed)
+    }
   	return (
     	<Router>
             <NavBar chosenUser={chosenUser} active={page}/>
@@ -90,6 +98,7 @@ function App() {
 												send={sendGift}
 												page={changePage}/>} />
             </Routes>
+			<Modal show={showModal} setVisibility={closeModal} movieName={lastRentedName} /> 
         </Router>
   	);
 }

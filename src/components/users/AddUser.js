@@ -14,7 +14,7 @@ export default function AddUser({add}) {
     }
     return (
         <div className="new-user">
-            <button className="new-user__button" onClick={toggleUserAddition}>
+            <button className="btn-svg" onClick={toggleUserAddition}>
                 <svg>
                     <use href={`${Icons}#addUser`}/>
                 </svg>
